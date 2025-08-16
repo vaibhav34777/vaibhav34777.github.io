@@ -1,0 +1,426 @@
+/* style.css */
+
+/* Define Custom Variables (Optional: Override Bootstrap vars or use your own) */
+:root {
+  --primary-color: #2563eb; /* Your primary blue */
+  --secondary-color: #1e40af; /* Darker blue */
+  --light-bg: #f8fafc;    /* Light background */
+  --dark-bg: #0f172a;     /* Dark background */
+  --text-dark: #0f172a;
+  --text-light: #f8fafc;
+  --text-muted-custom: #64748b;
+  --light-gray-border: #e2e8f0;
+}
+
+/* Apply Bootstrap variable overrides (Example) */
+body {
+  /* Use Bootstrap's variables primarily, override if needed */
+  /* Example: Make Bootstrap primary color use your definition */
+   --bs-primary: var(--primary-color);
+   --bs-primary-rgb: 37, 99, 235; /* RGB value for --primary-color */
+   --bs-secondary: var(--secondary-color); /* You might want to adjust Bootstrap's secondary too */
+   --bs-secondary-rgb: 30, 64, 175;
+   --bs-body-color: var(--text-dark);
+   --bs-body-bg: white;
+   padding-top: 70px; /* Adjust based on fixed navbar height */
+}
+
+/* Global Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+   color: var(--text-dark);
+}
+h2 {
+   color: var(--dark-bg); /* Section titles dark */
+   font-size: 2.5rem;
+   position: relative;
+   padding-bottom: 15px; /* Space for underline */
+   margin-bottom: 50px !important; /* Override Bootstrap margin if needed */
+}
+
+/* Section Title Underline */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+
+p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.7;
+  color: var(--text-muted-custom);
+}
+
+/* Navbar */
+.navbar {
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar .navbar-brand.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+.navbar .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+  margin: 0 5px; /* Spacing between nav items */
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 80vh; /* Minimum height */
+  background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
+  position: relative; /* For potential pseudo-elements */
+}
+.hero-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+/* Custom Button (Extends Bootstrap btn-primary) */
+.custom-btn {
+  padding: 12px 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn:hover {
+  background-color: var(--secondary-color); /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+/* About Section */
+.profile-img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border: 5px solid var(--light-gray-border);
+}
+
+/* Skills Section */
+.skill-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important; /* Increase shadow on hover */
+}
+.skill-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+   color: var(--text-muted-custom);
+}
+.skill-list i {
+   width: 20px; /* Ensure icons align */
+}
+.skill-card .card-title {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Experience Timeline */
+.experience-timeline {
+  position: relative;
+  max-width: 800px; /* Max width for the timeline */
+  padding: 30px 0;
+}
+
+.experience-timeline::before { /* The central line */
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: var(--light-gray-border);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px; /* Half of the width */
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+/* Align items to left/right */
+.timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: 25px; /* Space from center line */
+}
+.timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: 25px; /* Space from center line */
+}
+
+/* Timeline marker (circle on the line) */
+.timeline-marker {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 3px solid var(--primary-color);
+  border-radius: 50%;
+  top: 25px; /* Adjust vertical position */
+  z-index: 1;
+}
+.timeline-item:nth-child(odd) .timeline-marker {
+  right: -8px; /* Position marker over the line */
+}
+.timeline-item:nth-child(even) .timeline-marker {
+  left: -8px; /* Position marker over the line */
+}
+
+/* Arrow pointing towards the line */
+.timeline-content::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px; /* Align with marker */
+  width: 0;
+  z-index: 1;
+  border: medium solid white; /* Base for arrow */
+}
+.timeline-item:nth-child(odd) .timeline-content::before {
+  right: -10px; /* Pointing right */
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white; /* Arrow color matches card bg */
+}
+.timeline-item:nth-child(even) .timeline-content::before {
+  left: -10px; /* Pointing left */
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent; /* Arrow color matches card bg */
+}
+
+
+.timeline-content {
+  position: relative;
+  border-radius: 8px;
+  background-color: white; /* Ensure background for overlap */
+  /* Use Bootstrap card styles where possible */
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.timeline-content .date {
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.timeline-content ul {
+  padding-left: 20px; /* Indent list items */
+  margin-bottom: 0;
+}
+.timeline-content ul li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* Projects Section */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Ensure image corners are rounded if card is */
+}
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+.project-img {
+  height: 200px;
+  object-fit: cover; /* Cover the area, might crop */
+  background-color: var(--light-gray-border); /* Placeholder bg */
+}
+.project-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+.project-card .card-title {
+  font-size: 1.3rem;
+}
+.project-card .btn i {
+  font-size: 0.9em; /* Slightly smaller icons in buttons */
+}
+
+
+/* Education Section */
+.education-card {
+   border-left: 5px solid var(--primary-color);
+}
+.education-card .degree {
+  font-size: 1.1rem;
+}
+
+
+/* Contact Section */
+.contact-item .contact-icon {
+  width: 40px; /* Fixed width for alignment */
+  text-align: center;
+}
+.contact-item a {
+   color: var(--primary-color);
+   text-decoration: none;
+   transition: color 0.3s ease;
+}
+.contact-item a:hover {
+  color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-bg);
+}
+footer .social-links a {
+  transition: color 0.3s ease;
+}
+footer .social-links a:hover {
+  color: var(--primary-color) !important; /* Override text-white */
+}
+
+/* Responsive Adjustments */
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  h2 {
+      font-size: 2.2rem;
+  }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  body {
+      padding-top: 56px; /* Adjust for smaller navbar height */
+  }
+  .hero {
+      min-height: 60vh;
+      text-align: center;
+  }
+  .hero h1 {
+      font-size: 2.5rem; /* Smaller heading on mobile */
+  }
+  .hero-subtitle {
+      font-size: 1.1rem;
+  }
+  .profile-img {
+      max-width: 250px; /* Smaller image */
+      margin-bottom: 30px;
+  }
+
+  /* Adjust Timeline for mobile */
+  .experience-timeline::before {
+      left: 20px; /* Move line to the left */
+      margin-left: 0;
+  }
+  .timeline-item {
+      width: 100%;
+      padding-left: 50px; /* Space items from the line */
+      padding-right: 15px;
+      left: 0 !important; /* Reset left positioning */
+  }
+   .timeline-item:nth-child(even) {
+      padding-left: 50px; /* Consistent padding */
+  }
+  .timeline-marker {
+      left: 12px !important; /* Position marker on the left line */
+      right: auto;
+  }
+   .timeline-item:nth-child(odd) .timeline-marker,
+   .timeline-item:nth-child(even) .timeline-marker {
+       left: 12px !important;
+   }
+
+  /* Adjust timeline arrow for mobile */
+  .timeline-content::before {
+      left: -10px !important; /* Point left */
+      right: auto;
+      border-width: 10px 10px 10px 0 !important;
+      border-color: transparent white transparent transparent !important;
+  }
+  .timeline-item:nth-child(odd) .timeline-content::before {
+       left: -10px !important; /* Also point left */
+       border-width: 10px 10px 10px 0 !important;
+       border-color: transparent white transparent transparent !important;
+   }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  h2 {
+      font-size: 2rem;
+  }
+   h2::after {
+       width: 50px;
+       height: 3px;
+   }
+  .hero h1 {
+      font-size: 2.2rem;
+  }
+   .project-card .card-title {
+      font-size: 1.15rem;
+  }
+}
+
+/* Ensure skills grid remains neat */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Project card improvements */
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: var(--accent);
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.project-card a {
+    display: inline-block;
+    margin-top: 0.25rem;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
+
+/* Contact icons alignment */
+.contact-links a {
+    margin-right: 1rem;
+}

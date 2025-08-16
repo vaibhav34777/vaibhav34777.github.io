@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vaibhav Rana · Portfolio</title>
+    <meta name="description" content="Portfolio of Vaibhav Rana — projects, skills, and contact." />
+    <meta property="og:title" content="Vaibhav Rana · Portfolio" />
+    <meta property="og:description" content="Projects, skills, and contact." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🧠</text></svg>">
+    <style>
+      :root{
+        --bg: #0b0f17;          /* page background */
+        --panel: #111826;       /* cards/nav */
+        --muted: #9aa4b2;       /* secondary text */
+        --text: #e6edf3;        /* primary text */
+        --accent: #7c3aed;      /* purple */
+        --accent-2: #22d3ee;    /* cyan */
+        --ring: rgba(124,58,237,0.35);
+        --radius: 16px;
+        --shadow: 0 10px 30px rgba(0,0,0,.35);
+      }
+      *{box-sizing:border-box}
+      html{scroll-behavior:smooth}
+      body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+      a{color:var(--accent);text-decoration:none}
+      a:hover{opacity:.9}
+
+      /* Navbar */
+      .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.2) blur(8px);background:rgba(11,15,23,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+      .nav .container{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+      .brand{font-weight:800;letter-spacing:.4px}
+      .brand span{color:var(--accent)}
+      .nav a{color:var(--text);opacity:.85;margin-left:18px}
+      .nav a.active{color:var(--accent)}
+
+      /* Sections */
+      .container{max-width:1100px;margin:0 auto;padding:80px 20px}
+      section{padding:20px 0}
+      h1,h2,h3{line-height:1.2;margin:0 0 12px}
+      h2{font-size:28px}
+      .muted{color:var(--muted)}
+
+      /* Hero */
+      .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+      .hero h1{font-size:44px;margin-bottom:12px}
+      .badge{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.6px}
+      .cta{display:flex;gap:12px;margin-top:16px}
+      .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.08);padding:12px 16px;border-radius:12px;background:var(--panel);color:var(--text);box-shadow:var(--shadow)}
+      .btn.primary{background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.15));border-color:rgba(124,58,237,.35)}
+      .btn:focus{outline:3px solid var(--ring)}
+      .headshot{width:100%;aspect-ratio:1/1;border-radius:16px;background:radial-gradient(1200px 400px at -10% -20%,rgba(124,58,237,.35),transparent),radial-gradient(800px 300px at 120% 120%,rgba(34,211,238,.3),transparent),#0e1524;display:grid;place-items:center;border:1px solid rgba(255,255,255,.07)}
+
+      /* Cards grid */
+      .grid{display:grid;gap:16px}
+      @media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
+      .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+      .card h3{margin-top:6px}
+      .pill{display:inline-block;font-size:12px;color:#cbd5e1;background:rgba(148,163,184,.12);padding:4px 8px;border-radius:999px;margin:4px 6px 0 0}
+
+      /* Projects */
+      .projects .card img{width:100%;height:160px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+      .projects .links{display:flex;gap:10px;margin-top:10px}
+
+      /* Skills */
+      .skills .grid{grid-template-columns:repeat(2,1fr)}
+      @media(min-width:720px){.skills .grid{grid-template-columns:repeat(4,1fr)}}
+      .skill{display:flex;align-items:center;gap:10px}
+
+      /* Contact */
+      form{display:grid;gap:12px}
+      input, textarea{background:#0c1322;color:var(--text);border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:12px}
+      input:focus, textarea:focus{outline:3px solid var(--ring)}
+      footer{padding:30px 20px;border-top:1px solid rgba(255,255,255,.06);text-align:center;color:var(--muted)}
+
+      /* Utilities */
+      .flex{display:flex;gap:12px;align-items:center}
+      .sep{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);margin:24px 0}
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="nav">
+      <div class="container">
+        <div class="brand">Vaibhav<span>Rana</span></div>
+        <div class="links">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="container hero">
+      <div>
+        <span class="badge">Machine Learning · Data Engineering</span>
+        <h1>Hi, I'm Vaibhav — I build practical ML systems and data apps.</h1>
+        <p class="muted">Recent B.Tech grad with hands-on projects in forecasting, recommender systems, and computer vision. I enjoy shipping end‑to‑end solutions on the cloud.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/vaibhav34777" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="sep"></div>
+        <div class="flex muted">
+          <span>Open to: ML Engineer · Data Scientist · Data Engineer</span>
+        </div>
+      </div>
+      <div class="headshot" aria-hidden="true">
+        <svg width="140" height="140" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7c3aed"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="46" stroke="url(#g)" stroke-width="3" fill="none"/>
+          <text x="50" y="57" text-anchor="middle" font-size="36" fill="#e6edf3">VR</text>
+        </svg>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="container">
+      <h2>About</h2>
+      <p class="muted">I specialize in building data‑driven products—from cleaning streams to deploying models with Docker/Kubernetes on AWS. I focus on clarity, reliability, and shipping small, useful increments.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Focus Areas</h3>
+          <span class="pill">Time Series</span>
+          <span class="pill">Recommenders</span>
+          <span class="pill">Computer Vision</span>
+          <span class="pill">MLOps</span>
+        </div>
+        <div class="card">
+          <h3>What I'm Exploring</h3>
+          <p class="muted">Efficient inference, vector search, and lightweight serving for on‑CPU deployments.</p>
+        </div>
+        <div class="card">
+          <h3>Resume</h3>
+          <p class="muted">Add your resume link below once ready.</p>
+          <a class="btn" href="#" id="resume-link">Download Resume (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="container projects">
+      <h2>Projects</h2>
+      <p class="muted">Selected projects and recent repositories. Cards populate automatically from GitHub.</p>
+      <div id="projects-grid" class="grid">
+        <!-- JS will inject cards here -->
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="container skills">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="card skill"><span>🐍</span><div><strong>Python</strong><div class="muted">pandas · numpy · FastAPI</div></div></div>
+        <div class="card skill"><span>🤖</span><div><strong>ML</strong><div class="muted">scikit‑learn · TensorFlow/PyTorch</div></div></div>
+        <div class="card skill"><span>🗄️</span><div><strong>Data</strong><div class="muted">PostgreSQL · Spark · Kafka</div></div></div>
+        <div class="card skill"><span>☁️</span><div><strong>Cloud</strong><div class="muted">AWS (S3, EKS, RDS)</div></div></div>
+        <div class="card skill"><span>🐳</span><div><strong>DevOps</strong><div class="muted">Docker · Kubernetes · GitHub Actions</div></div></div>
+        <div class="card skill"><span>📊</span><div><strong>Analytics</strong><div class="muted">Visualization · Experimentation</div></div></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+      <h2>Contact</h2>
+      <p class="muted">Want to collaborate or have an opportunity? Drop a message — I’ll reply soon.</p>
+      <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+        <input required name="name" placeholder="Your name" />
+        <input required type="email" name="email" placeholder="Your email" />
+        <textarea required name="message" rows="5" placeholder="Message"></textarea>
+        <button class="btn primary" type="submit">Send Message</button>
+        <p id="form-status" class="muted"></p>
+      </form>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Vaibhav Rana · <a href="https://github.com/vaibhav34777" target="_blank" rel="noopener">GitHub</a>
+    </footer>
+
+    <script>
+      // ===== Config =====
+      const GH_USERNAME = "vaibhav34777"; // taken from your link
+      const MAX_PROJECTS = 6;              // how many repo cards to render
+      const EXCLUDE_FORKS = true;          // hide forks to keep it clean
+      const HIDE_TOPICS = ["config", "dotfiles"]; // ignore utility repos
+      const PREFERRED_TOPICS = ["machine-learning","data-science","computer-vision","time-series","nlp","mlops","aws"];
+
+      // ===== Nav active link on scroll =====
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href')));
+      const onScroll = () => {
+        const y = window.scrollY + 120;
+        sections.forEach((sec, i) => {
+          if(!sec) return;
+          const top = sec.offsetTop; const bottom = top + sec.offsetHeight;
+          if (y >= top && y < bottom) {
+            navLinks.forEach(n => n.classList.remove('active'));
+            navLinks[i].classList.add('active');
+          }
+        });
+      };
+      document.addEventListener('scroll', onScroll);
+
+      // ===== Render projects from GitHub API =====
+      async function fetchRepos() {
+        try {
+          const res = await fetch(`https://api.github.com/users/${GH_USERNAME}/repos?per_page=100&sort=updated`);
+          const all = await res.json();
+          let repos = Array.isArray(all) ? all : [];
+          if (EXCLUDE_FORKS) repos = repos.filter(r => !r.fork);
+
+          // Prefer repositories that match favored topics/keywords in description
+          const score = (r) => {
+            let s = 0;
+            const desc = (r.description || "").toLowerCase();
+            PREFERRED_TOPICS.forEach(t => { if (desc.includes(t) || (r.topics||[]).includes(t)) s += 2; });
+            s += (r.stargazers_count || 0) * 0.5; // weight stars
+            s += (r.forks_count || 0) * 0.2;
+            return s;
+          };
+
+          // Filter out boring topics and archived
+          repos = repos.filter(r => !r.archived && !HIDE_TOPICS.some(t => (r.topics||[]).includes(t)));
+
+          // Sort by custom score then updated time
+          repos.sort((a,b) => score(b) - score(a) || new Date(b.pushed_at) - new Date(a.pushed_at));
+
+          // Take top N
+          renderProjects(repos.slice(0, MAX_PROJECTS));
+        } catch (e) {
+          console.error(e);
+          document.getElementById('projects-grid').innerHTML = `<div class="card"><h3>Could not load repos</h3><p class="muted">GitHub API rate limit hit. Try again later.</p></div>`;
+        }
+      }
+
+      function repoLangPill(lang){
+        if(!lang) return '';
+        return `<span class="pill">${lang}</span>`;
+      }
+
+      function renderProjects(list){
+        const grid = document.getElementById('projects-grid');
+        if(!list.length){
+          grid.innerHTML = `<div class="card"><h3>Add your featured projects</h3><p class="muted">Pin some repositories on GitHub and they will appear here automatically.</p></div>`;
+          return;
+        }
+        grid.innerHTML = list.map(r => `
+          <article class="card">
+            <img alt="cover" src="https://opengraph.githubassets.com/1/${r.owner.login}/${r.name}" onerror="this.remove()"/>
+            <h3>${r.name.replace(/-/g,' ')}</h3>
+            <p class="muted">${r.description || 'No description provided.'}</p>
+            <div>${repoLangPill(r.language)} ${(r.topics||[]).slice(0,3).map(t=>`<span class='pill'>${t}</span>`).join('')}</div>
+            <div class="links">
+              <a class="btn" href="${r.html_url}" target="_blank" rel="noopener">Source ↗</a>
+              ${r.homepage ? `<a class="btn" href="${r.homepage}" target="_blank" rel="noopener">Demo ↗</a>`: ''}
+            </div>
+          </article>
+        `).join('');
+      }
+
+      // ===== Contact form (Formspree) user feedback =====
+      const form = document.getElementById('contact-form');
+      form.addEventListener('submit', async (e) => {
+        const status = document.getElementById('form-status');
+        status.textContent = 'Sending…';
+        try {
+          const data = new FormData(form);
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
+          if (res.ok) {
+            status.textContent = 'Thanks! Your message has been sent.';
+            form.reset();
+          } else {
+            status.textContent = 'Something went wrong. Please email me directly.';
+          }
+        } catch {
+          document.getElementById('form-status').textContent = 'Network error. Please try again later.';
+        }
+        e.preventDefault();
+      });
+
+      // ===== Boot =====
+      document.getElementById('year').textContent = new Date().getFullYear();
+      fetchRepos();
+    </script>
+  </body>
+</html>

@@ -478,6 +478,89 @@
             font-size: 1.3rem;
         }
 
+        /* Experience Cards */
+        .experience-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+            border: 1px solid rgba(255, 0, 110, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 110, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .experience-card:hover::before {
+            left: 100%;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.3);
+            border-color: var(--primary);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.5rem;
+            gap: 2rem;
+        }
+
+        .experience-header h3 {
+            color: var(--light);
+            font-size: 1.3rem;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .experience-date {
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.4);
+        }
+
+        .experience-card p {
+            color: var(--accent);
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+            text-shadow: 0 0 10px rgba(255, 190, 11, 0.5);
+        }
+
+        .experience-card ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            color: #E0E0E0;
+        }
+
+        .experience-card li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
         .timeline-content .company {
             color: var(--accent);
             font-weight: 600;
@@ -792,6 +875,15 @@
                 margin-bottom: 1rem;
             }
 
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .experience-date {
+                margin-top: 0.8rem;
+            }
+
             .skills-grid, .projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -889,18 +981,18 @@
 </section>
 <section class="fade-in" id="experience">
 <h2 class="section-title">Experience</h2>
-<div class="timeline">
-<div class="timeline-item">
-<div class="timeline-date">Oct 2025 – Present</div>
-<div class="timeline-content">
+<div class="experience-cards">
+<div class="experience-card">
+<div class="experience-header">
 <h3>ML Engineer</h3>
-<p class="company">Medecro Technologies</p>
-<ul style="margin: 1rem 0; padding-left: 1.5rem; color: #E0E0E0;">
-<li style="margin-bottom: 0.8rem;">Built and deployed end-to-end tooth segmentation and numbering system for OPG X-rays using Cascade Mask R-CNN (R50) and ConvNeXt classifier with post-processing heuristics, achieving ~97% numbering accuracy</li>
-<li style="margin-bottom: 0.8rem;">Developed multi-class anatomical segmentor using Mask2Former (Swin backbone) achieving ~80% mAP50 for precise dental structure identification</li>
+<span class="experience-date">Oct 2025 – Present</span>
+</div>
+<p>Medecro Technologies</p>
+<ul>
+<li>Built and deployed end-to-end tooth segmentation and numbering system for OPG X-rays using Cascade Mask R-CNN (R50) and ConvNeXt classifier with post-processing heuristics, achieving ~97% numbering accuracy</li>
+<li>Developed multi-class anatomical segmentor using Mask2Former (Swin backbone) achieving ~80% mAP50 for precise dental structure identification</li>
 <li>Deployed multi-class detection models for RVG X-rays using Cascade R-CNN achieving ~83% mAP50; integrated all pipelines into production imaging system for automated clinical insights and improved diagnostic workflow</li>
 </ul>
-</div>
 </div>
 </div>
 </section>
